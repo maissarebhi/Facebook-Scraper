@@ -4,7 +4,6 @@
 import sys
 import warnings
 import re
-sys.path.append("C:\\Users\\JK844UZ\OneDrive - EY\\Desktop")
 import urllib.request
 from urllib.error import HTTPError
 #error.HTTPError
@@ -26,6 +25,7 @@ import warnings
 import time
 import pandas as pd
 from time import sleep
+from sqlalchemy import create_engine
 import re
 def has_numbers(inputString):
     return bool(re.search(r'\d', inputString))
@@ -122,7 +122,7 @@ class facebookScraper:
         for i in list_of_urls:
             result.append(self.get_fb_info(i))
         return pd.DataFrame(result)
-    def collect_page(self, pagename,depth=2,out_file='C:\\Users\\JK844UZ\OneDrive - EY\\Desktop\\posts.csv'):
+    def collect_page(self, pagename,depth=2):
         # navigate to page
         fb_url='https://www.facebook.com/'+pagename
         fb_url=fb_url.replace('www',"m")
@@ -164,4 +164,10 @@ class facebookScraper:
             temp['shares']=L[2].replace('Comments','')
             result.append(temp)
         self.browser.close()
+        self.posts=result
         return result
+    def save_data_to_database(self):
+        engine = create_engine('Database', echo=False)  
+        pd.DataFrame(self.posts).to_sql('Posts',con=engine, if_exists='append')
+        
+    
