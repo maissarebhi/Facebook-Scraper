@@ -30,8 +30,6 @@ import re
 def has_numbers(inputString):
     return bool(re.search(r'\d', inputString))
 
-from google_trans_new import google_translator
-translator = google_translator()
 
 import os
 
