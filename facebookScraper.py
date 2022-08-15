@@ -46,7 +46,7 @@ class facebookScraper:
     
     #path to chrome driver
     
-    def __init__(self,user=None,pwd=None,delay=15,path_to_chrome='C:\\Users\\JK844UZ\\OneDrive - EY\\Desktop\\scraper\\selenuim facebook scraper\\chromedriver.exe'):
+    def __init__(self,user=None,pwd=None,delay=15,path_to_chrome='path to chrome driver \\chromedriver.exe'):
         self.path_to_chrome=path_to_chrome
         self.get_browser()
         self.user=user
