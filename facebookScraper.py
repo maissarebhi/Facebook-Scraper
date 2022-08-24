@@ -7,7 +7,6 @@ import re
 import urllib.request
 from urllib.error import HTTPError
 #error.HTTPError
-import bs4 as bs
 
 
 import csv
@@ -30,8 +29,6 @@ import re
 def has_numbers(inputString):
     return bool(re.search(r'\d', inputString))
 
-from google_trans_new import google_translator
-translator = google_translator()
 
 import os
 
